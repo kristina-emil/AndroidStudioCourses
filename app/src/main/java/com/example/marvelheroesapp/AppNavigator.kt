@@ -6,24 +6,32 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
+
 @Composable
-fun MarvelApp(heroes: List<Hero>) {
+fun MarvelApp(heroes: List<HeroForRender>, hasError: Boolean, onRetry: () -> Unit) {
     MaterialTheme {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "hero_list") {
+        NavHost(
+            navController = navController,
+            startDestination = "hero_list"
+        ) {
             composable("hero_list") {
                 HeroListScreen(
                     heroes = heroes,
+                    hasError = hasError,
                     onHeroClick = { hero ->
-                        navController.navigate("hero_detail/${hero.name}")
-                    }
+                        navController.navigate("hero_detail/${hero.id}")
+                    },
+                    onRetry = onRetry,
                 )
             }
-            composable("hero_detail/{heroName}") { backStackEntry ->
-                val heroName = backStackEntry.arguments?.getString("heroName")
-                val hero = heroes.firstOrNull { it.name == heroName }
-                if (hero != null) {
-                    HeroDetailScreen(hero = hero, onBackClick = { navController.popBackStack() })
+            composable("hero_detail/{heroId}") { backStackEntry ->
+                val heroId = backStackEntry.arguments?.getString("heroId")?.toIntOrNull()
+                if (heroId != null) {
+                    HeroDetailScreen(
+                        heroId = heroId,
+                        onBackClick = { navController.popBackStack() },
+                    )
                 }
             }
         }

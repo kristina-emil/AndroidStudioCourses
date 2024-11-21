@@ -11,18 +11,16 @@ import androidx.compose.ui.graphics.drawscope.Fill
 @Composable
 fun CustomBackground() {
     Canvas(modifier = Modifier.fillMaxSize()) {
-        // Рисуем черный фон
         drawRect(
             color = Color.Black,
             size = size
         )
 
-        // Рисуем красный треугольник
         val path = Path().apply {
-            moveTo(size.width, size.height) // Нижний правый угол
-            lineTo(size.width * 0.5f, size.height) // Центр по горизонтали снизу
-            lineTo(size.width, size.height * 0.5f) // Центр по вертикали справа
-            close() // Замыкаем треугольник
+            moveTo(size.width, size.height)
+            lineTo(size.width * 0.5f, size.height)
+            lineTo(size.width, size.height * 0.5f)
+            close()
         }
 
         drawPath(
