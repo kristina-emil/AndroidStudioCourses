@@ -6,13 +6,11 @@ plugins {
 
 android {
     namespace = "com.example.marvelheroesapp"
-    compileSdk = 34
     compileSdk = 35 // Обновлено на 35 для совместимости
 
     defaultConfig {
         applicationId = "com.example.marvelheroesapp"
         minSdk = 24
-        targetSdk = 34
         targetSdk = 35 // Обновлено для согласования с compileSdk
         versionCode = 1
         versionName = "1.0"
@@ -55,7 +53,6 @@ android {
 }
 
 dependencies {
-
     // Core Android и Lifecycle
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -94,14 +91,6 @@ dependencies {
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-
     // Материальные иконки
     implementation(libs.androidx.material.icons.extended)
 
@@ -112,7 +101,6 @@ dependencies {
     implementation(libs.converter.moshi)
     kapt(libs.moshi.kotlin.codegen) // Для генерации адаптеров Moshi
 
-
-}    // Material Components
+    // Material Components
     implementation(libs.material)
 }
