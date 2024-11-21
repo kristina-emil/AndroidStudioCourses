@@ -69,6 +69,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.coil.compose)
 
+    // Accompanist (дополнительные библиотеки для Compose)
     implementation(libs.accompanist.pager)
     implementation(libs.accompanist.pager.indicators)
 
